@@ -1,7 +1,5 @@
 
-$Id: README 23584 2010-09-14 23:18:51Z jimg $
-
-Updated for version 1.0.3
+Updated for version 1.0.4
 
 This is the OPeNDAP csv Data Handler. It is used along with OPeNDAP Hyrax.
 

@@ -1,3 +1,35 @@
+2013-10-01  James Gallagher <jgallagher@opendap.org>
+
+	Updated the FSF address in the copyright headers
+
+2013-09-26  James Gallagher <jgallagher@opendap.org>
+
+	removed -fno-defer-pop from all copies of Makefile.am since the new OSX compiler prints warnings about it and it seems to not make a difference with newer g++ versions.
+
+2013-08-28  Nathan Potter <ndp@opendap.org>
+
+	csv_handler: Updating version number, changelog, etc. for pending Hyrax 1.9 release
+
+2013-08-28  Nathan Potter <ndp@opendap.org>
+
+	csv_handler: Updating version number, changelog, etc. for pending Hyrax 1.9 release
+
+2012-04-13  James Gallagher <jgallagher@opendap.org>
+
+	After merge with hyrax 1.8 release branch and full build w/o test failures.
+
+	_M   .
+	M    csv_handler.spec
+	_M   bes-testsuite
+	M    bes-testsuite/csv/temperature.csv.2.bescmd.baseline
+	M    configure.ac
+	M    NEWS
+	M    ChangeLog
+	M    README
+
+;; Local Variables:
+;; coding: utf-8
+;; End:
 2012-04-13  James Gallagher <jgallagher@opendap.org>
 
 	After merge with hyrax 1.8 release branch and full build w/o test failures.
