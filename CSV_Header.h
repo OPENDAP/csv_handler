@@ -11,19 +11,19 @@
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 //
 // You can contact University Corporation for Atmospheric Research at
 // 3080 Center Green Drive, Boulder, CO 80301
- 
+
 // (c) COPYRIGHT University Corporation for Atmospheric Research 2004-2005
 // Please read the full copyright statement in the file COPYRIGHT_UCAR.
 //
@@ -45,26 +45,24 @@
 
 using namespace std;
 
-class CSV_Header : public BESObj
-{
+class CSV_Header: public BESObj {
 private:
-    map<string,CSV_Field*>*	_hdr ;
-    map<int,string>*		_index2field ;
+	map<string, CSV_Field*>* _hdr;
+	map<int, string>* _index2field;
 public:
-  				CSV_Header();
-    virtual		        ~CSV_Header();
-  
-    const bool			populate( vector<string>* headerinfo ) ;
+	CSV_Header();
+	virtual ~CSV_Header();
 
-    void			getFieldList( vector<string> &list ) ;
+	bool populate(vector<string>* headerinfo) const;
 
-    const string		getFieldType(const string& fieldName);
+	void getFieldList(vector<string> &list);
 
-    CSV_Field *			getField(const int& index) ;
-    CSV_Field *			getField(const string& fieldName) ;
+	const string getFieldType(const string& fieldName);
 
-    virtual void		dump( ostream &strm ) const ;
+	CSV_Field * getField(const int& index);
+	CSV_Field * getField(const string& fieldName);
+
+	virtual void dump(ostream &strm) const;
 };
 
 #endif // I_CSV_Header_h
-
