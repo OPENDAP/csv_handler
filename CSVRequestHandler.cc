@@ -198,12 +198,21 @@ bool CSVRequestHandler::csv_build_data(BESDataHandlerInterface &dhi)
 	}
 }
 
+/**
+ * This method is used to respond to both the DMR and DAP requests
+ * because the DMR holds data (I did not keep the DAP2 implementation
+ * idea that there is a separate 'data object).
+ *
+ * @param dhi
+ * @return true if it worked; throws an exception otherwise
+ */
 bool CSVRequestHandler::csv_build_dmr(BESDataHandlerInterface &dhi)
 {
 	// Because this code does not yet know how to build a DMR directly, use
 	// the DMR ctor that builds a DMR using a 'full DDS' (a DDS with attributes).
 	// First step, build the 'full DDS'
 	string data_path = dhi.container->access();
+
 	BaseTypeFactory factory;
 	DDS dds(&factory, name_path(data_path), "3.2");
 	dds.filename(data_path);
@@ -217,8 +226,6 @@ bool CSVRequestHandler::csv_build_dmr(BESDataHandlerInterface &dhi)
 		csv_read_attributes(das, data_path);
 		Ancillary::read_ancillary_das(das, data_path);
 		dds.transfer_attributes(&das);
-
-		dhi.data[POST_CONSTRAINT] = dhi.container->get_constraint();
 	}
 	catch (InternalErr &e) {
 		throw BESDapError(e.get_error_message(), true, e.get_error_code(), __FILE__, __LINE__);
@@ -243,6 +250,15 @@ bool CSVRequestHandler::csv_build_dmr(BESDataHandlerInterface &dhi)
 	delete dmr->factory();
 	delete dmr;
 	bdmr.set_dmr(built_dmr);	// BESDMRResponse will delete this object
+
+	// Instead of fiddling with the internal storage of the DHI object,
+	// (by setting dhi.data[DAP4_CONSTRAINT], etc., directly) use these
+	// methods to set the constraints. But, why? Maybe setting data[]
+	// directly is better? jhrg 8/14/14
+	bdmr.set_dap4_constraint(dhi);
+	bdmr.set_dap4_function(dhi);
+
+	// What about async and store_result? See BESDapTransmit::send_dap4_data()
 
 	return true;
 }
