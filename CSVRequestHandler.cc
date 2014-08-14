@@ -75,7 +75,10 @@ CSVRequestHandler::CSVRequestHandler(string name) :
 	add_handler(DDS_RESPONSE, CSVRequestHandler::csv_build_dds);
 	add_handler(DATA_RESPONSE, CSVRequestHandler::csv_build_data);
 
+	// We can use the same DMR object for both the metadata and data
+	// responses. jhrg 8/13/14
 	add_handler(DMR_RESPONSE, CSVRequestHandler::csv_build_dmr);
+	add_handler(DAP4DATA_RESPONSE, CSVRequestHandler::csv_build_dmr);
 
 	add_handler(VERS_RESPONSE, CSVRequestHandler::csv_build_vers);
 	add_handler(HELP_RESPONSE, CSVRequestHandler::csv_build_help);
