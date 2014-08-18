@@ -232,7 +232,7 @@ bool CSVRequestHandler::csv_build_dmr(BESDataHandlerInterface &dhi)
 		throw BESDapError(e.get_error_message(), false, e.get_error_code(), __FILE__, __LINE__);
 	}
 	catch (...) {
-		throw BESDapError("Caught unknown error build CSV DataDDS response", true, unknown_error, __FILE__, __LINE__);
+		throw BESDapError("Caught unknown error build CSV DMR response", true, unknown_error, __FILE__, __LINE__);
 	}
 
 	// Second step, make a DMR using the DDS
