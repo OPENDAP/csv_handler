@@ -236,7 +236,6 @@ bool CSVRequestHandler::csv_build_dmr(BESDataHandlerInterface &dhi)
 	}
 
 	// Second step, make a DMR using the DDS
-	DMR *built_dmr = new DMR(new D4BaseTypeFactory, dds);
 
 	// Extract the DMR Response object - this holds the DMR used by the
 	// other parts of the framework.
@@ -245,9 +244,8 @@ bool CSVRequestHandler::csv_build_dmr(BESDataHandlerInterface &dhi)
 
 	// Remove the existing DMR and set the newly made one
 	DMR *dmr = bdmr.get_dmr();
-	delete dmr->factory();
-	delete dmr;
-	bdmr.set_dmr(built_dmr);	// BESDMRResponse will delete this object
+	dmr->set_factory(new D4BaseTypeFactory);
+	dmr->build_using_dds(dds);
 
 	// Instead of fiddling with the internal storage of the DHI object,
 	// (by setting dhi.data[DAP4_CONSTRAINT], etc., directly) use these
