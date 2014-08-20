@@ -140,9 +140,7 @@ bool CSVRequestHandler::csv_build_dds(BESDataHandlerInterface &dhi)
 		Ancillary::read_ancillary_das(das, accessed);
 		dds->transfer_attributes(&das);
 
-		BESDEBUG( "csv", "dds = " << endl << *dds << endl );
-		dhi.data[POST_CONSTRAINT] = dhi.container->get_constraint();
-
+		bdds->set_constraint(dhi);
 		return ret;
 	}
 	catch (InternalErr &e) {
@@ -181,8 +179,7 @@ bool CSVRequestHandler::csv_build_data(BESDataHandlerInterface &dhi)
 		Ancillary::read_ancillary_das(das, accessed);
 		dds->transfer_attributes(&das);
 
-		BESDEBUG( "csv", "dds = " << endl << *dds << endl );
-		dhi.data[POST_CONSTRAINT] = dhi.container->get_constraint();
+		bdds->set_constraint(dhi);
 		return ret;
 	}
 	catch (InternalErr &e) {
