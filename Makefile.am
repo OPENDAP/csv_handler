@@ -12,7 +12,7 @@ ACLOCAL_AMFLAGS = -I conf
 lib_besdir=$(libdir)/bes
 lib_bes_LTLIBRARIES = libcsv_module.la
 
-SUBDIRS = bes-testsuite
+SUBDIRS = . bes-testsuite
 
 CSV_SRCS = \
 		CSVModule.cc CSVRequestHandler.cc			\

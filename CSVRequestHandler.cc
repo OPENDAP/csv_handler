@@ -239,7 +239,8 @@ bool CSVRequestHandler::csv_build_dmr(BESDataHandlerInterface &dhi)
 	BESResponseObject *response = dhi.response_handler->get_response_object();
 	BESDMRResponse &bdmr = dynamic_cast<BESDMRResponse &>(*response);
 
-	// Remove the existing DMR and set the newly made one
+	// Extract the DMR Response object - this holds the DMR used by the
+	// other parts of the framework.
 	DMR *dmr = bdmr.get_dmr();
 	dmr->set_factory(new D4BaseTypeFactory);
 	dmr->build_using_dds(dds);
