@@ -7,6 +7,9 @@ AC_INIT(csv_handler, 1.0.4, opendap-tech@opendap.org)
 AC_CONFIG_SRCDIR([configure.ac])
 AC_CONFIG_HEADER([config.h])
 
+## Added to support the 'modules' build feature of the bes. jhrg 11/19/14
+AM_CONDITIONAL([DAP_MODULES], [false])
+
 PACKAGE_MAJOR_VERSION=`echo $PACKAGE_VERSION | sed 's@^\([[0-9]]\)*\.\([[0-9]]*\)\.\([[0-9]]*\)$@\1@'`
 PACKAGE_MINOR_VERSION=`echo $PACKAGE_VERSION | sed 's@^\([[0-9]]\)*\.\([[0-9]]*\)\.\([[0-9]]*\)$@\2@'`
 PACKAGE_SUBMINOR_VERSION=`echo $PACKAGE_VERSION | sed 's@^\([[0-9]]\)*\.\([[0-9]]*\)\.\([[0-9]]*\)$@\3@'`
@@ -56,7 +59,6 @@ AC_CHECK_LIBDAP([3.13.0],
  [ AC_MSG_ERROR([Cannot find libdap])
 ])
   
-
 AC_CHECK_BES([3.13.0],
 [
 ],
@@ -65,5 +67,14 @@ AC_CHECK_BES([3.13.0],
 
 OPENDAP_DEBUG_OPTION
 
+## This sets up the special symbols used to build the bes.conf file for
+## the tests. Previously, this was done in the Makefile.am down in the
+## test directory, but building the bes.conf here works better with
+## autoconf overall and esp. with the 'modules' build. jhrg 11/19/14
+modulesdir=$BES_MODULE_DIR
+AC_SUBST(modulesdir)
+
 AC_CONFIG_FILES([Makefile bes-testsuite/atlocal bes-testsuite/Makefile])
+AC_CONFIG_FILES([bes-testsuite/bes.conf])
+
 AC_OUTPUT

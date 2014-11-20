@@ -5,7 +5,15 @@
 #
 # $Id: Makefile.am 12972 2006-01-05 15:41:07Z pwest $
 
-AUTOMAKE_OPTIONS = foreign check-news
+AUTOMAKE_OPTIONS = foreign
+
+if DAP_MODULES
+AM_CPPFLAGS = -I$(top_srcdir)/dispatch -I$(top_srcdir)/dap $(DAP_CFLAGS)
+LIBADD = $(DAP_SERVER_LIBS) $(DAP_CLIENT_LIBS)
+else
+AM_CPPFLAGS = $(BES_CPPFLAGS)
+LIBADD = $(BES_DAP_LIBS)
+endif
 
 ACLOCAL_AMFLAGS = -I conf
 
@@ -26,9 +34,8 @@ CSV_HDRS = \
 		CSV_Header.h CSV_Obj.h CSV_Reader.h CSV_Utils.h
 
 libcsv_module_la_SOURCES = $(CSV_SRCS) $(CSV_HDRS)
-libcsv_module_la_CPPFLAGS = $(BES_CPPFLAGS)
 libcsv_module_la_LDFLAGS = -avoid-version -module 
-libcsv_module_la_LIBADD = $(BES_DAP_LIBS)
+libcsv_module_la_LIBADD = $(LIBADD)
 
 EXTRA_PROGRAMS = 
 
@@ -49,7 +56,7 @@ install-data-local: csv.conf
 uninstall-local:
 	rm -f $(DESTDIR)$(sysconfdir)/bes/modules/csv.conf
 
-csv.conf: csv.conf.in config.status
+csv.conf: csv.conf.in $(top_srcdir)/config.status
 	sed -e "s%[@]bes_modules_dir[@]%${lib_besdir}%" $< > csv.conf
 
 dist-hook:
