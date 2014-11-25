@@ -17,7 +17,8 @@ noinst_DATA = bes.conf
 
 CLEANFILES = *.log *.sum site.exp gmon.*
 
-EXTRA_DIST = csv csv_handlerTest.at $(TESTSUITE) atlocal.in $(srcdir)/package.m4 bes.conf.in
+EXTRA_DIST = csv csv_handlerTest.at $(TESTSUITE) atlocal.in $(srcdir)/package.m4 \
+bes.conf.in bes.conf.modules.in 
 
 DISTCLEANFILES = bes.conf
 
