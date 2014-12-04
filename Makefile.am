@@ -6,6 +6,11 @@
 # $Id: Makefile.am 12972 2006-01-05 15:41:07Z pwest $
 
 AUTOMAKE_OPTIONS = foreign
+ACLOCAL_AMFLAGS = -I conf
+
+# Set the module version here, in the spec file and in configure.ac
+M_NAME=csv_handler
+M_VER=1.0.4
 
 if DAP_MODULES
 AM_CPPFLAGS = -I$(top_srcdir)/dispatch -I$(top_srcdir)/dap $(DAP_CFLAGS)
@@ -15,7 +20,7 @@ AM_CPPFLAGS = $(BES_CPPFLAGS)
 LIBADD = $(BES_DAP_LIBS)
 endif
 
-ACLOCAL_AMFLAGS = -I conf
+AM_CPPFLAGS += -DMODULE_NAME=\"$(M_NAME)\" -DMODULE_VERSION=\"$(M_VER)\"
 
 lib_besdir=$(libdir)/bes
 lib_bes_LTLIBRARIES = libcsv_module.la
