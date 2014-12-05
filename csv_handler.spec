@@ -1,17 +1,17 @@
 Summary:         CSV module for the OPeNDAP Data server
 Name:            csv_handler
 Version:         1.0.4
-Release:         1
+Release:         2
 License:         LGPLv2+
 Group:           System Environment/Daemons 
 Source0:         http://www.opendap.org/pub/source/%{name}-%{version}.tar.gz
 URL:             http://www.opendap.org/
-Requires:        libdap >= 3.13.0
-Requires:        bes >= 3.13.0
+Requires:        libdap >= 3.13.3
+Requires:        bes >= 3.13.2
 
 BuildRoot:       %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
-BuildRequires:   libdap-devel >= 3.13.0
-BuildRequires:   bes-devel >= 3.13.0
+BuildRequires:   libdap-devel >= 3.13.3
+BuildRequires:   bes-devel >= 3.13.2
 
 %description
 This is the CSV module for our data server. It serves data stored in CSV-formatted files.
