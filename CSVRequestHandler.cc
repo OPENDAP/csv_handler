@@ -11,19 +11,19 @@
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 //
 // You can contact University Corporation for Atmospheric Research at
 // 3080 Center Green Drive, Boulder, CO 80301
- 
+
 // (c) COPYRIGHT University Corporation for Atmospheric Research 2004-2005
 // Please read the full copyright statement in the file COPYRIGHT_UCAR.
 //
@@ -91,7 +91,7 @@ CSVRequestHandler::csv_build_das( BESDataHandlerInterface &dhi )
 	das = bdas->get_das() ;
     else
 	throw BESInternalError( "cast error", __FILE__, __LINE__ ) ;
-  
+
     try
     {
 	string accessed = dhi.container->access() ;
@@ -128,10 +128,10 @@ CSVRequestHandler::csv_build_dds( BESDataHandlerInterface &dhi )
 	dds = bdds->get_dds();
     else
 	throw BESInternalError( "cast error", __FILE__, __LINE__ ) ;
-  
+
     BaseTypeFactory *factory = new BaseTypeFactory ;
     dds->set_factory( factory ) ;
-    
+
     try
     {
 	string accessed = dhi.container->access() ;
@@ -179,7 +179,7 @@ CSVRequestHandler::csv_build_data( BESDataHandlerInterface &dhi )
 	dds = bdds->get_dds();
     else
 	throw BESInternalError( "cast error", __FILE__, __LINE__ ) ;
-  
+
     BaseTypeFactory *factory = new BaseTypeFactory ;
     dds->set_factory(factory);
 
@@ -226,8 +226,12 @@ CSVRequestHandler::csv_build_vers( BESDataHandlerInterface &dhi )
     BESVersionInfo *info = dynamic_cast < BESVersionInfo * >(response);
     if( !info )
 	throw BESInternalError( "cast error", __FILE__, __LINE__ ) ;
-  
-    info->add_module( PACKAGE_NAME, PACKAGE_VERSION ) ;
+
+#if 0
+    info->add_module(PACKAGE_NAME, PACKAGE_VERSION);
+#endif
+    info->add_module(MODULE_NAME, MODULE_VERSION);
+
     return ret ;
 }
 
@@ -241,8 +245,8 @@ CSVRequestHandler::csv_build_help( BESDataHandlerInterface &dhi )
 	throw BESInternalError( "cast error", __FILE__, __LINE__ ) ;
 
     map<string,string> attrs ;
-    attrs["name"] = PACKAGE_NAME ;
-    attrs["version"] = PACKAGE_VERSION ;
+    attrs["name"] = MODULE_NAME ;
+    attrs["version"] = MODULE_VERSION ;
     string handles = (string) DAS_RESPONSE
         + "," + DDS_RESPONSE
         + "," + DATA_RESPONSE

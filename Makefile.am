@@ -5,14 +5,27 @@
 #
 # $Id: Makefile.am 12972 2006-01-05 15:41:07Z pwest $
 
-AUTOMAKE_OPTIONS = foreign check-news
-
+AUTOMAKE_OPTIONS = foreign
 ACLOCAL_AMFLAGS = -I conf
+
+# Set the module version here, in the spec file and in configure.ac
+M_NAME=csv_handler
+M_VER=1.0.4
+
+if DAP_MODULES
+AM_CPPFLAGS = -I$(top_srcdir)/dispatch -I$(top_srcdir)/dap $(DAP_CFLAGS)
+LIBADD = $(DAP_SERVER_LIBS) $(DAP_CLIENT_LIBS)
+else
+AM_CPPFLAGS = $(BES_CPPFLAGS)
+LIBADD = $(BES_DAP_LIBS)
+endif
+
+AM_CPPFLAGS += -DMODULE_NAME=\"$(M_NAME)\" -DMODULE_VERSION=\"$(M_VER)\"
 
 lib_besdir=$(libdir)/bes
 lib_bes_LTLIBRARIES = libcsv_module.la
 
-SUBDIRS = bes-testsuite
+SUBDIRS = . bes-testsuite
 
 CSV_SRCS = \
 		CSVModule.cc CSVRequestHandler.cc			\
@@ -26,9 +39,8 @@ CSV_HDRS = \
 		CSV_Header.h CSV_Obj.h CSV_Reader.h CSV_Utils.h
 
 libcsv_module_la_SOURCES = $(CSV_SRCS) $(CSV_HDRS)
-libcsv_module_la_CPPFLAGS = $(BES_CPPFLAGS)
 libcsv_module_la_LDFLAGS = -avoid-version -module 
-libcsv_module_la_LIBADD = $(BES_DAP_LIBS)
+libcsv_module_la_LIBADD = $(LIBADD)
 
 EXTRA_PROGRAMS = 
 
@@ -49,7 +61,7 @@ install-data-local: csv.conf
 uninstall-local:
 	rm -f $(DESTDIR)$(sysconfdir)/bes/modules/csv.conf
 
-csv.conf: csv.conf.in config.status
+csv.conf: csv.conf.in $(top_srcdir)/config.status
 	sed -e "s%[@]bes_modules_dir[@]%${lib_besdir}%" $< > csv.conf
 
 dist-hook:
