@@ -191,15 +191,15 @@ csv_read_descriptors( DDS &dds, const string &filename )
 	else
 	{
 		delete csvObj;
-	    string err = (string)"Unkown type for field " + fieldName ;
+	    string err = (string)"Unknown type for field " + fieldName ;
 	    throw BESInternalError( err, __FILE__, __LINE__ ) ;
 	}
 
 	dds.add_var( ar ) ;
-	
+
 	//if( ar ) {
 	delete ar ; ar = 0 ; // }
-	//if( bt ) { 
+	//if( bt ) {
 	delete bt ; bt = 0 ; //}
     }
 

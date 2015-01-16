@@ -65,8 +65,6 @@ AC_CHECK_BES([3.13.0],
 [ AC_MSG_ERROR([Cannot find bes])
 ])
 
-OPENDAP_DEBUG_OPTION
-
 ## This sets up the special symbols used to build the bes.conf file for
 ## the tests. Previously, this was done in the Makefile.am down in the
 ## test directory, but building the bes.conf here works better with
