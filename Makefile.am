@@ -34,7 +34,6 @@ CSV_SRCS = \
 
 CSV_HDRS = \
 		CSVModule.h CSVRequestHandler.h				\
-		CSVResponseNames.h					\
 		CSVDAS.h CSVDDS.h CSV_Data.h CSV_Field.h		\
 		CSV_Header.h CSV_Obj.h CSV_Reader.h CSV_Utils.h
 
@@ -63,9 +62,6 @@ uninstall-local:
 
 csv.conf: csv.conf.in $(top_srcdir)/config.status
 	sed -e "s%[@]bes_modules_dir[@]%${lib_besdir}%" $< > csv.conf
-
-dist-hook:
-	rm -rf `find $(distdir) -name .svn`
 
 C4_DIR=./cccc
 .PHONY: cccc
