@@ -1,3 +1,137 @@
+2015-03-19  James Gallagher  <jgallagher@opendap.org>
+
+	Merge branch 'master' of https://github.com/opendap/csv_handler
+
+	Removed $(srcdir) prefix on package.m4 in the EXTRA_DIST variable.
+
+	Modified Makefile.am for distcheck combined with the modules build of the BES
+
+2015-01-16  James Gallagher  <jgallagher@opendap.org>
+
+	Removed dist-hook which as a hack for SVN
+
+	Merge remote-tracking branch 'origin/dap4'
+	Conflicts:
+		CSVRequestHandler.cc
+		configure.ac
+
+2014-12-12  James Gallagher  <jgallagher@opendap.org>
+
+	Merge remote-tracking branch 'origin/modules'
+
+2014-12-07  James Gallagher  <jgallagher@opendap.org>
+
+	Added module name and version info to Makefile.am
+	This change was made to support the modules build where the autoconf
+	symbols PACKAGE_NAME and _MODULE are defined by the bes configure
+	script. This meant that the version response from the bes was useless
+	since it listed every module as 'bes' and gave the bes' version
+	number.
+
+2014-12-04  James Gallagher  <jgallagher@opendap.org>
+
+	Updated the spec file to release 2.
+	Since this package version didn't change but the deps
+	did, I've bumped the release number.
+
+2014-12-03  James Gallagher  <jgallagher@opendap.org>
+
+	Fix for the module version number.
+	Module version numbers came from the configure scripts but the move to
+	one script builds - the modules build - broke that because those
+	configure scripts are not run anymore. I added two Makefile variables
+	to Makefile.am to hold the module name and version; a less than
+	optimal solution since now the information has to be maintained in two
+	or three places (configure.ac and .spec for the standard build and
+	Makefile.am for the modules build).
+
+2014-11-26  James Gallagher  <jgallagher@opendap.org>
+
+	Modified Makefile.am so that . appears first in SUBDIRS
+
+2014-11-24  James Gallagher  <jgallagher@opendap.org>
+
+	Added the new bes.conf.modules.in to EXTRA_DIST in Makefile.am
+
+2014-11-19  James Gallagher  <jgallagher@opendap.org>
+
+	Added changes for the modules build.
+	Changed configure.ac and the Makefile.am files to support both the
+	standard build and the 'modules' build. Added a new template version
+	of bes.conf(.modules.in) that is used by the bes configure script
+	when the --with-dap-modules option is given.
+
+	Added .gitignore on the modules branch.
+
+2014-09-16  James Gallagher  <jgallagher@opendap.org>
+
+	Removed the old OPENDAP_DEBUG_OPTIONS macro from many configure.ac
+	files. Subclasses for/of Sequence were not defining the length()
+	virtual method correctly - adding 'const' quieted the warning.
+	Fileout GDAL had an unneeded param (ConstraintEvaluator).
+
+2014-09-03  James Gallagher  <jgallagher@opendap.org>
+
+	Changed Makefile.am so that it builds the main directory before the tests
+
+2014-08-20  James Gallagher  <jgallagher@opendap.org>
+
+	Fixed this code to use the set_constraint() method BESResponse object.
+
+2014-08-19  James Gallagher  <jgallagher@opendap.org>
+
+	Modified so that the DMR built by the BES is used instead of a
+	making a completely new one. This will enable information read
+	from the context manager, etc., to be set by the BES framework and
+	then used by the handlers. Part of the changes include using the
+	DMR::build_using_dds() method.
+
+2014-08-18  James Gallagher  <jgallagher@opendap.org>
+
+	Corrected spelling in error messages
+
+	Error message text fixed.
+
+2014-08-15  James Gallagher  <jgallagher@opendap.org>
+
+	removed an unused header
+
+2014-08-14  James Gallagher  <jgallagher@opendap.org>
+
+	CSV handler support for DAP4 DMR and Data now supports DAP4 CEs
+	except for functions.
+
+2014-08-13  James Gallagher  <jgallagher@opendap.org>
+
+	Added support for dap4 data responses to the csv handler.
+
+	Impements DAP4 DMR response.
+	M    CSVModule.cc
+	M    CSVModule.h
+	M    CSVRequestHandler.cc
+	M    CSVRequestHandler.h
+	D    CSVResponseNames.h
+	M    CSV_Header.cc
+	M    CSV_Header.h
+	M    CSV_Obj.cc
+	M    CSV_Reader.cc
+	M    CSV_Reader.h
+	A    bes-testsuite/csv/temperature.csv.dmr.bescmd
+	A    bes-testsuite/csv/temperature.csv.dmr.bescmd.baseline
+	M    bes-testsuite/csv_handlerTest.at
+
+	Make a branch for dap4 work - second try
+	A    https://scm.opendap.org/svn/branch/csv_handler/dap4
+
+	Load the dap4 branch with code from the trunk - then I'll 'svn switch' my hacked/modified working copy with dap4 changes to it. This is necessary because the respository needs to have code that my code has a common ancestry with.
+	A    https://scm.opendap.org/svn/branch/csv_handler/dap4/csv_handler
+
+	Added
+	A    https://scm.opendap.org/svn/branch/csv_handler/dap4
+
+2014-04-23  Nathan Potter  <ndp@opendap.org>
+
+	csv_handler: Checking software version update and associated release changes.
 2013-10-01  James Gallagher <jgallagher@opendap.org>
 
 	Updated the FSF address in the copyright headers
