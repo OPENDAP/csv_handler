@@ -38,9 +38,7 @@
 
 #include"CSV_Data.h"
 
-CSV_Data::CSV_Data() {
-  type = "";
-  initialized = false;
+CSV_Data::CSV_Data() : data(0), type(""), initialized(false) {
 }
 
 CSV_Data::~CSV_Data() {
