@@ -13,9 +13,9 @@ TEST_COV_FLAGS = -ftest-coverage -fprofile-arcs
 
 noinst_DATA = bes.conf
 
-CLEANFILES = *.log *.sum site.exp gmon.*
+CLEANFILES = *.log *.sum $(srcdir)/package.m4
 
-EXTRA_DIST = csv csv_handlerTest.at $(TESTSUITE) atlocal.in package.m4 \
+EXTRA_DIST = csv csv_handlerTest.at $(TESTSUITE) atlocal.in \
 bes.conf.in bes.conf.modules.in 
 
 DISTCLEANFILES = bes.conf
@@ -44,12 +44,13 @@ AUTOM4TE = autom4te
 # in the tar.gz distribution.
 TESTSUITE = $(srcdir)/csv_handlerTest
 
-check-local: atconfig atlocal $(TESTSUITE)
+check-local: atconfig atlocal $(srcdir)/package.m4 $(TESTSUITE)
 	$(SHELL) '$(TESTSUITE)' $(TESTSUITEFLAGS)
 
 clean-local:
 	test ! -f '$(TESTSUITE)' || $(SHELL) '$(TESTSUITE)' --clean
-
+	-rm $(srcdir)/package.m4
+	
 distclean-local:
 	-rm atconfig
 
