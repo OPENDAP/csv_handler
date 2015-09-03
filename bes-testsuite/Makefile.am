@@ -13,7 +13,7 @@ TEST_COV_FLAGS = -ftest-coverage -fprofile-arcs
 
 noinst_DATA = bes.conf
 
-CLEANFILES = *.log *.sum $(srcdir)/package.m4
+CLEANFILES = *.log *.sum
 
 EXTRA_DIST = csv csv_handlerTest.at $(TESTSUITE) atlocal.in \
 bes.conf.in bes.conf.modules.in 
