@@ -23,7 +23,7 @@
 //
 // You can contact University Corporation for Atmospheric Research at
 // 3080 Center Green Drive, Boulder, CO 80301
- 
+
 // (c) COPYRIGHT University Corporation for Atmospheric Research 2004-2005
 // Please read the full copyright statement in the file COPYRIGHT_UCAR.
 //
@@ -41,42 +41,54 @@
 
 using namespace std;
 
-class CSV_Field : public BESObj
-{
+class CSV_Field: public BESObj {
 private:
-    string			_name ;
-    string			_type ;
-    int				_index ;
+    string _name;
+    string _type;
+    int _index;
 public:
-    				CSV_Field() { }
-    virtual 			~CSV_Field() { }
+    CSV_Field(): _name(""), _type(""), _index(0)
+    {
+    }
+    virtual ~CSV_Field()
+    {
+    }
 
-    void			insertName( const string& fieldName )
-				    { _name = fieldName; }
-    void			insertType( const string& fieldType )
-				    { _type = fieldType; }
-    void			insertIndex( const int& fieldIndex )
-				    { _index = fieldIndex; }
+    void insertName(const string& fieldName)
+    {
+        _name = fieldName;
+    }
+    void insertType(const string& fieldType)
+    {
+        _type = fieldType;
+    }
+    void insertIndex(const int& fieldIndex)
+    {
+        _index = fieldIndex;
+    }
 
-    string			getName() { return _name ; }
-    string			getType() { return _type ; }
-    int				getIndex() { return _index ; }
+    string getName() const
+    {
+        return _name;
+    }
+    string getType() const
+    {
+        return _type;
+    }
+    int getIndex() const
+    {
+        return _index;
+    }
 
-    virtual void		dump( ostream &strm ) const
-				{
-				    strm << BESIndent::LMarg
-					 << "CSV_Field::dump - ("
-					 << (void *)this << ")" << endl ;
-				    BESIndent::Indent() ;
-				    strm << BESIndent::LMarg
-					 << "name: " << _name << endl
-				         << BESIndent::LMarg
-					 << "type: " << _type << endl
-				         << BESIndent::LMarg
-					 << "index: " << _index << endl ;
-				    BESIndent::UnIndent() ;
-				}
-} ;
+    virtual void dump(ostream &strm) const
+    {
+        strm << BESIndent::LMarg << "CSV_Field::dump - (" << (void *) this << ")" << endl;
+        BESIndent::Indent();
+        strm << BESIndent::LMarg << "name: " << _name << endl << BESIndent::LMarg << "type: " << _type << endl
+            << BESIndent::LMarg << "index: " << _index << endl;
+        BESIndent::UnIndent();
+    }
+};
 
 #endif // I_CSV_Field_h
 
