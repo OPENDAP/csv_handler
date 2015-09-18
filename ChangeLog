@@ -1,3 +1,40 @@
+2015-09-17  James Gallagher  <jgallagher@opendap.org>
+
+	Fixes for issues found by Coverity
+
+2015-09-11  James Gallagher  <jgallagher@opendap.org>
+
+	Modified Makefile.am to support distcheck
+
+2015-09-03  James Gallagher  <jgallagher@opendap.org>
+
+	Removed $(srcdir)package.m4 from CLEANFILES in Makefile.am
+	We should keep this around since it's part of the distribution.
+	DISTCLEAN will remove it.
+
+2015-08-05  James Gallagher  <jgallagher@opendap.org>
+
+	Merge branch 'master' of https://github.com/opendap/csv_handler
+
+	Makefile.am modifications for the package.m4
+
+2015-08-04  James Gallagher  <jgallagher@opendap.org>
+
+	Fixed package.m4 in the autoconf dirs Makefile.am files
+
+2015-05-12  James Gallagher  <jgallagher@opendap.org>
+
+	Fixed warning about init'd data in ctor
+
+2015-04-09  James Gallagher  <jgallagher@opendap.org>
+
+	Merge branch 'master' of https://github.com/opendap/csv_handler
+
+	Modified Makefile.am to support bes distcheck
+
+2015-04-06  James Gallagher  <jgallagher@opendap.org>
+
+	Version 1.1.0
 2015-03-19  James Gallagher  <jgallagher@opendap.org>
 
 	Merge branch 'master' of https://github.com/opendap/csv_handler
