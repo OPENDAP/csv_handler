@@ -20,7 +20,7 @@ AM_CPPFLAGS = $(BES_CPPFLAGS)
 LIBADD = $(BES_DAP_LIBS)
 endif
 
-AM_CPPFLAGS += -DMODULE_NAME=\"$(M_NAME)\" -DMODULE_VERSION=\"$(M_VER=1.1.1
+AM_CPPFLAGS += -DMODULE_NAME=\"$(M_NAME)\" -DMODULE_VERSION=\"$(M_VER)\"
 
 lib_besdir=$(libdir)/bes
 lib_bes_LTLIBRARIES = libcsv_module.la
