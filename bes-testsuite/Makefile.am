@@ -13,12 +13,12 @@ TEST_COV_FLAGS = -ftest-coverage -fprofile-arcs
 
 noinst_DATA = bes.conf
 
-CLEANFILES = *.log *.sum $(srcdir)/package.m4 $(TESTSUITE) 
+CLEANFILES = bes.conf
 
 EXTRA_DIST = csv $(TESTSUITE).at $(TESTSUITE) atlocal.in \
 bes.conf.in bes.conf.modules.in $(srcdir)/package.m4
 
-DISTCLEANFILES = bes.conf atconfig
+DISTCLEANFILES = atconfig
 
 if DAP_MODULES
 BES_CONF_IN = bes.conf.modules.in
@@ -52,11 +52,7 @@ installcheck-local: atconfig atlocal $(srcdir)/package.m4 $(TESTSUITE)
 
 clean-local:
 	test ! -f '$(TESTSUITE)' || $(SHELL) '$(TESTSUITE)' --clean
-
-# -rm $(srcdir)/package.m4
-
-# distclean-local:
-#	-rm atconfig
+	-rm -f $(TESTSUITE) $(srcdir)/package.m4 
 
 AUTOTEST = $(AUTOM4TE) --language=autotest
 $(TESTSUITE): $(srcdir)/csv_handlerTest.at $(srcdir)/package.m4
