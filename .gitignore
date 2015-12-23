@@ -51,6 +51,7 @@ gl/*.h
 
 bes-testsuite/bes.conf
 bes-testsuite/csv_handlerTest
+bes-testsuite/csv_handlerTest.dir
 bes-testsuite/package.m4
 
 
