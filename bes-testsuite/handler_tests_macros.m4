@@ -1,5 +1,5 @@
 #
-# These macros represent the best way I've found to incorporate builiding baselines
+# These macros represent the best way I've found to incorporate building baselines
 # into autotest testsuites. Until Hyrax/BES has a comprehensive way to make these
 # kinds of tests - using a single set of macros from one source, copy this into
 # the places it's needed and hack. If substantial changes are needed, try to copy
