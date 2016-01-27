@@ -3,7 +3,7 @@
 # Configure script for OPeNDAP CSV data handler
 
 AC_PREREQ(2.59)
-AC_INIT([csv_handler], [1.1.2], [opendap-tech@opendap.org])
+AC_INIT([csv_handler], [1.1.3], [opendap-tech@opendap.org])
 AC_CONFIG_SRCDIR([configure.ac])
 AC_CONFIG_HEADER([config.h])
 

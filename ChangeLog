@@ -1,3 +1,20 @@
+2016-01-26  James Gallagher  <jgallagher@opendap.org>
+
+	Updated autotest tests, macros and Makefile.am files
+
+2015-12-23  Nathan Potter  <ndp@opendap.org>
+
+	Updated igonore to include the failed tests dir
+
+2015-12-15  James Gallagher  <jgallagher@opendap.org>
+
+	Updated the test baselines for the DMR fix in libdap
+	Also moved the tests over to a handler_tests_macros.m4 that is based on
+	the 'template' version in bes/modules
+
+2015-10-27  James Gallagher  <jgallagher@opendap.org>
+
+	Update for bes 3.16.0 release
 2015-10-01  Nathan Potter  <ndp@opendap.org>
 
 	Committing changes (mostly to bes.conf.in files) in support of
