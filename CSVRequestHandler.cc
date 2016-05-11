@@ -159,7 +159,7 @@ bool CSVRequestHandler::csv_build_data(BESDataHandlerInterface &dhi)
 	bool ret = true;
 	BESResponseObject *response = dhi.response_handler->get_response_object();
 	BESDataDDSResponse *bdds = dynamic_cast<BESDataDDSResponse *>(response);
-	DataDDS *dds = 0;
+	DDS *dds = 0;
 	if (bdds)
 		dds = bdds->get_dds();
 	else
