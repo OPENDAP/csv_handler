@@ -1,3 +1,11 @@
+2016-02-02  James Gallagher  <jgallagher@opendap.org>
+
+	Resolved conflicts
+
+2016-01-26  James Gallagher  <jgallagher@opendap.org>
+
+	Updated ChangeLog, etc., for the bes 3.17 release
+
 2016-01-26  James Gallagher  <jgallagher@opendap.org>
 
 	Updated autotest tests, macros and Makefile.am files
