@@ -36,6 +36,7 @@
 
 #include <DDS.h>
 #include <DAS.h>
+#include <DataDDS.h>
 #include <BaseTypeFactory.h>
 #include <Ancillary.h>
 
@@ -65,6 +66,8 @@
 #include "CSVDDS.h"
 #include "CSVDAS.h"
 #include "CSVRequestHandler.h"
+
+using namespace libdap;
 
 CSVRequestHandler::CSVRequestHandler(string name) :
 		BESRequestHandler(name)
